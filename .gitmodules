@@ -1,3 +1,6 @@
 [submodule "getting_familiar"]
 	path = getting_familiar
 	url = git@github.com:acejang1994/getting_familiar.git
+[submodule "warmup_project"]
+	path = warmup_project
+	url = git@github.com:acejang1994/warmup_project.git
