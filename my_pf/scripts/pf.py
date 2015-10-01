@@ -15,6 +15,7 @@ from tf import TransformListener
 from tf import TransformBroadcaster
 from tf.transformations import euler_from_quaternion, rotation_matrix, quaternion_from_matrix
 from random import gauss
+from numpy.random import randn, random_sample, normal
 
 import math
 import time
@@ -222,7 +223,8 @@ class ParticleFilter:
         self.particle_cloud = []
         # TODO create particles
 
-        self.normalize_particles()
+        for i in range(self.n_particles):
+            self.particle_cloud.append(Particle(x=normal(0, .1), y=normal(0, .1), theta=normal(0, 1),w=1/float(self.n_particles)))
         self.update_robot_pose()
 
     def normalize_particles(self):
