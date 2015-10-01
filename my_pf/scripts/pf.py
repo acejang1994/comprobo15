@@ -152,6 +152,16 @@ class ParticleFilter:
                      new_odom_xy_theta[1] - self.current_odom_xy_theta[1],
                      new_odom_xy_theta[2] - self.current_odom_xy_theta[2])
 
+            print delta
+
+            r = math.sqrt(delta[0]**2 + delta[1]**2)
+            phi = math.atan2(delta[1], delta[2])
+            for particle in self.particle_cloud:
+                particle.x = particle.x + r*math.cos(phi + particle.theta)
+                particle.y = particle.y + r*math.sin(phi + particle.theta)
+                particle.theta = particle.theta + delta[2]
+                
+                
             self.current_odom_xy_theta = new_odom_xy_theta
         else:
             self.current_odom_xy_theta = new_odom_xy_theta
@@ -223,8 +233,9 @@ class ParticleFilter:
         self.particle_cloud = []
         # TODO create particles
 
-        for i in range(self.n_particles):
-            self.particle_cloud.append(Particle(x=normal(0, .1), y=normal(0, .1), theta=normal(0, 1),w=1/float(self.n_particles)))
+        self.particle_cloud.append(Particle(x=0,y=0,theta=0))
+        # for i in range(self.n_particles):
+        #     self.particle_cloud.append(Particle(x=normal(0, .1), y=normal(0, .1), theta=normal(0, 1),w=1/float(self.n_particles)))
         self.update_robot_pose()
 
     def normalize_particles(self):
