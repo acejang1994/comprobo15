@@ -29,12 +29,15 @@ class BallTracker(object):
         cv2.setMouseCallback('video_window', self.process_mouse_event)
         cv2.namedWindow('threshold_image')
         # (90, 193, 21, 72, 202, 255)
-        self.red_lower_bound = 90
-        self.red_upper_bound = 193
+        # bgr
+        
         self.blue_lower_bound = 21
         self.blue_upper_bound = 72
         self.green_lower_bound = 202
         self.green_upper_bound = 255
+        self.red_lower_bound = 90
+        self.red_upper_bound = 193
+        
         self.center_x, self.center_y = 0, 0
 
         cv2.createTrackbar('red lower bound', 'threshold_image', 0, 255, self.set_red_lower_bound)
