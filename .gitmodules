@@ -7,6 +7,6 @@
 [submodule "robot_localization"]
 	path = robot_localization
 	url = git@github.com:acejang1994/robot_localization.git
-[submodule "Computer_Vision"]
-	path = Computer_Vision
-	url = git@github.com:acejang1994/Computer_Vision.git
+[submodule "computer_vision"]
+	path = computer_vision
+	url = git@github.com:acejang1994/computer_vision.git
